@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cam  mod</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #4caf50;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            border: 1px solid #4caf50;
+            border-radius: 10px;
+            background-color: #2c2c3a;
+        }
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input, select {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h9>  <img src="https://i.ibb.co.com/ScLWGCk/IMG-20241120-073408-785.jpg/900" alt="">
+    
+    <h1>HOZOO PROJECT V5 </h1>
+    <div class="container">
+        <h2></h2>
+        <select id="template">
+            <option value="1">Festival Wishing</option>
+            <option value="2">Live YouTube TV</option>
+            <option value="3">Online Meeting</option>
+        </select>
+        <div id="template-options"></div>
+        <button onclick="start()">Start</button>
+    </div>
+
+    <div class="container">
+        <h2>Generated Link</h2>
+        <p id="generated-link">Click "Start" to generate a link</p>
+    </div>
+
+    <script>
+        document.getElementById('template').addEventListener('change', function() {
+            const templateOptions = document.getElementById('template-options');
+            const value = this.value;
+            let html = '';
+
+            if (value === "1") {
+                html = '<input type="text" id="festival-name" placeholder="Enter Festival Name">';
+            } else if (value === "2") {
+                html = '<input type="text" id="youtube-id" placeholder="Enter YouTube Video ID">';
+            }
+
+            templateOptions.innerHTML = html;
+        });
+
+        function start() {
+            const selectedTemplate = document.getElementById('template').value;
+            const generatedLink = document.getElementById('generated-link');
+            
+            if (selectedTemplate === "1") {
+                const festivalName = document.getElementById('festival-name').value || 'Festival';
+                generatedLink.textContent = `Generated Festival Link: https://example.com/festival/${encodeURIComponent(festivalName)}`;
+            } else if (selectedTemplate === "2") {
+                const youtubeId = document.getElementById('youtube-id').value || 'default_id';
+                generatedLink.textContent = `Generated YouTube TV Link: https://example.com/youtube/${encodeURIComponent(youtubeId)}`;
+            } else if (selectedTemplate === "3") {
+                generatedLink.textContent = 'Generated Online Meeting Link: https://example.com/meeting';
+            } else {
+                generatedLink.textContent = 'Invalid Template Selected';
+            }
+        }
+    </script>
+</body>
+</html>
